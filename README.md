@@ -171,7 +171,7 @@ Dart API (lib/)  ──Pigeon──▶  FicturaSDK (iOS)       ──▶  Fictur
 
 ```bash
 flutter pub get
-dart run pigeon --input pigeon/messages.dart   # after changing pigeon/messages.dart
+dart run pigeon --input pigeon/messages.dart && dart format lib/src/messages.g.dart   # after changing pigeon/messages.dart
 flutter analyze
 flutter test                                   # Dart unit tests
 ```
