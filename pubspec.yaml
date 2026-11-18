@@ -1,0 +1,38 @@
+name: fictura_flutter
+description: "Fictura for Flutter apps: events, screens, server-driven paywalls, placements, A/B tests, purchases and Dart error reporting, through the Fictura iOS and Android SDKs."
+version: 0.1.0
+homepage: https://fictura.co
+repository: https://github.com/Apex-Byte-Technologies/fictura_flutter
+issue_tracker: https://github.com/Apex-Byte-Technologies/fictura_flutter/issues
+topics:
+  - analytics
+  - paywall
+  - ab-testing
+  - attribution
+  - crash-reporting
+
+environment:
+  sdk: ^3.9.0
+  # Swift Package Manager is on by default from Flutter 3.44, and this package installs on iOS only through it.
+  flutter: '>=3.44.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # The generated Pigeon bridge uses its annotations.
+  meta: ^1.15.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  pigeon: ^29.0.1
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: co.fictura.fictura_flutter
+        pluginClass: FicturaFlutterPlugin
+      ios:
+        pluginClass: FicturaFlutterPlugin

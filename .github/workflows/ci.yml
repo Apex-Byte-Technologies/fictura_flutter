@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  dart:
+    name: Analyze and unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter pub get
+      - name: Generated bridge is up to date
+        run: |
+          dart run pigeon --input pigeon/messages.dart
+          git diff --exit-code -- lib/src/messages.g.dart android/src/main/kotlin ios/fictura_flutter/Sources
+      - run: dart format --output=none --set-exit-if-changed lib test example/lib example/integration_test pigeon
+      - run: flutter analyze
+      - run: flutter test
+      - run: dart pub publish --dry-run
