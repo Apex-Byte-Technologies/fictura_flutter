@@ -19,6 +19,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # The generated Pigeon bridge uses its annotations.
+  meta: ^1.15.0
 
 dev_dependencies:
   flutter_test:
