@@ -21,6 +21,8 @@ jobs:
       - name: Generated bridge is up to date
         run: |
           dart run pigeon --input pigeon/messages.dart
+          # The Dart output is kept in `dart format` style, like the rest of lib/.
+          dart format lib/src/messages.g.dart
           git diff --exit-code -- lib/src/messages.g.dart android/src/main/kotlin ios/fictura_flutter/Sources
       - run: dart format --output=none --set-exit-if-changed lib test example/lib example/integration_test pigeon
       - run: flutter analyze
